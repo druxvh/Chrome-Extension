@@ -1,4 +1,4 @@
-const saveSite = ["zzz", "xxx", "sss"];
+const saveSite = [];
 const inputText = document.getElementById("input-el");
 let inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("list-el");
@@ -7,6 +7,8 @@ inputBtn.addEventListener("click", function () {
   //   console.log("Event List test");
   saveSite.push(inputText.value);
   renderSites()
+  inputText.value = ""
+  
   //   console.log(saveSite)
 });
 
