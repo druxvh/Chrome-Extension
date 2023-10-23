@@ -35,3 +35,16 @@
   transition: ease-in-out 0.5s;
 }
 
+ul {
+  list-style: none;
+  margin-top: 1rem;
+  /* padding-left: 0; */
+}
+li {
+  /* color: #151515; */
+  text-decoration: underline;
+}
+a {
+  text-decoration: none;
+  color: #151515;
+}

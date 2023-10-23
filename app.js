@@ -17,7 +17,11 @@ function renderSites() {
 
   for (i = 0; i < saveSite.length; i++) {
     // console.log(saveSite[i])
-    listItems += "<li>" + saveSite[i] + "</li>";
+    listItems += `
+    <li>
+      <a href= '${saveSite[i]}'> ${saveSite[i]} </a>
+    </li>
+    `;
                 //Developer Way of writing the same code but professionally
             // let li = document.createElement("li")
             // li.textContent = saveSite[i]
@@ -26,3 +30,5 @@ function renderSites() {
 
   ulEl.innerHTML = listItems;
 }
+
+
