@@ -1,6 +1,10 @@
-const saveSite = [];
+let saveSite = [];
+saveSite.push("hey");
+let d = JSON.stringify(saveSite)
+console.log(typeof d)
+console.log(d)
 const inputText = document.getElementById("input-el");
-let inputBtn = document.getElementById("input-btn");
+const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("list-el");
 
 inputBtn.addEventListener("click", function () {
