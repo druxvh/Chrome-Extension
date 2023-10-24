@@ -1,20 +1,25 @@
 let saveSite = [];
-saveSite.push("hey");
-let d = JSON.stringify(saveSite)
-console.log(typeof d)
-console.log(d)
 const inputText = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("list-el");
+let savedInLS = JSON.parse(localStorage.getItem("saveSite"))
 
 inputBtn.addEventListener("click", function () {
   //   console.log("Event List test");
   saveSite.push(inputText.value);
-  renderSites()
   inputText.value = ""
-  
-  //   console.log(saveSite)
+  localStorage.setItem("saveSite", JSON.stringify(saveSite))
+  renderSites()
+  // console.log(localStorage.getItem("saveSite"))
+
 });
+
+ if (savedInLS) {
+  saveSite = savedInLS
+  renderSites()
+ } else {
+  alert("No Data Saved")
+ }
 
 function renderSites() {
   let listItems = " ";
