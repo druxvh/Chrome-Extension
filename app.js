@@ -6,6 +6,9 @@ const clearFunc = document.getElementById("clear-btn")
 
 const ulEl = document.getElementById("list-el");
 const savedInLS = JSON.parse(localStorage.getItem("saveSite"));
+const tabs = [
+  {url: "www.in.com"}
+]
 
 inputBtn.addEventListener("click", function () {
   //   console.log("Event List test");
@@ -18,6 +21,11 @@ inputBtn.addEventListener("click", function () {
 });
 
 saveTab.addEventListener("click", function() {
+  saveSite.push(tabs[0].url)
+  inputText.value = ""
+  localStorage.setItem("Tab", JSON.stringify(saveSite))
+  render(saveSite)
+  console.log(tabs[0].url)
   console.log("Save Tab Test")
 })
 clearFunc.addEventListener("dblclick", function() {
