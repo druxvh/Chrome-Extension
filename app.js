@@ -1,41 +1,38 @@
-let saveSite = [];
+let saveSite = []; // Pushing data into this array
 const inputText = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
-const saveTab = document.getElementById("tab-btn")
-const clearFunc = document.getElementById("clear-btn")
+const saveTab = document.getElementById("tab-btn");
+const clearFunc = document.getElementById("clear-btn");
 
 const ulEl = document.getElementById("list-el");
-const savedInLS = JSON.parse(localStorage.getItem("saveSite"));
-const tabs = [
-  {url: "www.in.com"}
-]
+const savedInLS = JSON.parse(localStorage.getItem("saveSite")); // Pushing the saved data into the Local Storage of the user.
 
+// The Input Text Field Save It Button
 inputBtn.addEventListener("click", function () {
-  //   console.log("Event List test");
   saveSite.push(inputText.value);
   inputText.value = "";
   localStorage.setItem("saveSite", JSON.stringify(saveSite));
   render(saveSite);
-  // console.log(localStorage.getItem("saveSite"))
-  console.log("Save  it test")
+  console.log("Save  it test");
 });
+// SaveTab Function
+saveTab.addEventListener("click", function () {
+  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+    saveSite.push(tabs[0].url);
+    localStorage.setItem("saveSite", JSON.stringify(saveSite));
+    render(saveSite);
+  });
 
-saveTab.addEventListener("click", function() {
-  saveSite.push(tabs[0].url)
-  inputText.value = ""
-  localStorage.setItem("Tab", JSON.stringify(saveSite))
-  render(saveSite)
-  console.log(tabs[0].url)
-  console.log("Save Tab Test")
-})
-clearFunc.addEventListener("dblclick", function() {
-  localStorage.clear()
-  saveSite= []
-  render(saveSite)
-  console.log("Clear Tab Test")
-})
-
-
+  // console.log(tabs[0].url)
+  console.log("Save Tab Test");
+});
+// Clear Data Function
+clearFunc.addEventListener("dblclick", function () {
+  localStorage.clear();
+  saveSite = [];
+  render(saveSite);
+  console.log("Clear Tab Test");
+});
 
 if (savedInLS) {
   //if (truthy)
@@ -45,6 +42,7 @@ if (savedInLS) {
   alert("No Data Saved (TEST)");
 }
 
+//  Render Function
 function render(saveSite) {
   let listItems = " ";
 
