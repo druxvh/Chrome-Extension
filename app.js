@@ -20,7 +20,10 @@ inputBtn.addEventListener("click", function () {
 saveTab.addEventListener("click", function() {
   console.log("Save Tab Test")
 })
-clearFunc.addEventListener("click", function() {
+clearFunc.addEventListener("dblclick", function() {
+  localStorage.clear()
+  saveSite= []
+  render(saveSite)
   console.log("Clear Tab Test")
 })
 
@@ -31,7 +34,7 @@ if (savedInLS) {
   saveSite = savedInLS;
   render(saveSite);
 } else {
-  alert("No Data Saved");
+  alert("No Data Saved (TEST)");
 }
 
 function render(saveSite) {
